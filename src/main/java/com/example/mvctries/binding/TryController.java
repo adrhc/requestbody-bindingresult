@@ -13,6 +13,7 @@ public class TryController {
 	@ResponseStatus(HttpStatus.OK)
 	public Level1 post(@RequestBody Level1 level1) {
 		log.debug("level1:\n{}", level1);
+		// {"nr1":1,"level2":{"nr21":21,"nr22":22}}
 		return level1;
 	}
 }

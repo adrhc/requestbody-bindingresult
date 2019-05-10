@@ -14,7 +14,7 @@ import java.util.Arrays;
 @Slf4j
 @Aspect
 @Component
-public class BindingHandler {
+public class BindingErrorsHandler {
 	@Before("@within(org.springframework.web.bind.annotation.RestController)")
 	public void logBefore(JoinPoint joinPoint) {
 		log.debug("joinPoint.getArgs:\n", joinPoint.getArgs());

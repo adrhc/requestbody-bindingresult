@@ -7,16 +7,15 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(TryController.class)
-public class TryControllerTest {
+class TryControllerTest {
 	@Autowired
 	private MockMvc mvc;
 
 	@Test
-	public void testExample() throws Exception {
+	void testExample() throws Exception {
 		this.mvc.perform(
 				post("/tryctrl")
 						.contentType(MediaType.APPLICATION_JSON_UTF8)

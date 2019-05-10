@@ -21,7 +21,7 @@ public class TryControllerTest {
 				post("/tryctrl")
 						.contentType(MediaType.APPLICATION_JSON_UTF8)
 						.accept(MediaType.APPLICATION_JSON_UTF8)
-						.content("{\"nr1\":asd,\"level2\":{\"nr21\":21,\"nr22\":22}}"))
+						.content("{\"nr1\":\"asd\",\"level2\":{\"nr21\":21,\"nr22\":22}}"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.nr1").value(1));
 	}

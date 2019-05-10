@@ -8,17 +8,16 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 public class CustomIntegerDeserializer extends StdDeserializer<Integer> {
-	final static NumberDeserializers.IntegerDeserializer wrapperInstance =
+	private final static NumberDeserializers.IntegerDeserializer wrapperInstance =
 			new NumberDeserializers.IntegerDeserializer(Integer.class, null);
 
 	public CustomIntegerDeserializer() {
 		this(null);
 	}
 
-	protected CustomIntegerDeserializer(Class<?> vc) {
+	private CustomIntegerDeserializer(Class<?> vc) {
 		super(vc);
 	}
 
@@ -27,8 +26,7 @@ public class CustomIntegerDeserializer extends StdDeserializer<Integer> {
 		try {
 			return wrapperInstance.deserialize(p, ctxt);
 		} catch (InvalidFormatException ex) {
-			ThreadLocal.withInitial(HashMap<String, String>::new)
-					.get().put(p.getCurrentName(), p.getText());
+			DeserializersState.ERRORS.get().put(p.getCurrentName(), p.getText());
 		}
 		return null;
 	}

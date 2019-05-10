@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
 
@@ -17,5 +18,6 @@ public class Level1 implements Serializable {
 	private Integer nr11;
 	@Min(5)
 	private Integer nr12;
+	@Valid
 	private Level2 level2;
 }

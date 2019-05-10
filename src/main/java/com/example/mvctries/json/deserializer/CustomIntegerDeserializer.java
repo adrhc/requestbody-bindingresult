@@ -2,6 +2,7 @@ package com.example.mvctries.json.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.JsonStreamContext;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.NumberDeserializers;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
@@ -26,8 +27,18 @@ public class CustomIntegerDeserializer extends StdDeserializer<Integer> {
 		try {
 			return wrapperInstance.deserialize(p, ctxt);
 		} catch (InvalidFormatException ex) {
-			DeserializersState.ERRORS.get().put(p.getCurrentName(), p.getText());
+			String parent = parentPath(ctxt.getParser().getParsingContext(), new StringBuilder()).toString();
+			DeserializersState.ERRORS.get().put(parent + p.getCurrentName(), p.getText());
 		}
 		return null;
+	}
+
+	private StringBuilder parentPath(JsonStreamContext parserCtxt, StringBuilder sb) {
+		JsonStreamContext parentCtxt = parserCtxt.getParent();
+		if (parentCtxt.getCurrentName() == null) {
+			return sb;
+		}
+		sb.insert(0, parentCtxt.getCurrentName() + '.');
+		return parentPath(parentCtxt, sb);
 	}
 }

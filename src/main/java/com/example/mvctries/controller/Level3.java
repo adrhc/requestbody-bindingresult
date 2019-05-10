@@ -6,20 +6,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-class Level2 implements Serializable {
+class Level3 implements Serializable {
 	@Min(5)
 	@JsonDeserialize(using = CustomIntegerDeserializer.class)
-	private Integer nr21;
+	private Integer nr31;
 	@Min(5)
 	@JsonDeserialize(using = CustomIntegerDeserializer.class)
-	private Integer nr22;
-	@Valid
-	private Level3 level3;
+	private Integer nr32;
 }

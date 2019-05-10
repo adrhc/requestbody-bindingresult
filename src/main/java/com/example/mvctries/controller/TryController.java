@@ -20,7 +20,7 @@ public class TryController {
 	public Level1 post(@Valid @RequestBody Level1 level1, BindingResult errors) {
 		log.debug("level1:\n{}", level1);
 		log.debug("errors:\n{}", errors);
-		// {"nr11":"nr11","nr12":1,"level2":{"nr21":"nr21","nr22":1,"level3":{"nr31":"nr31","nr32":1}}}
+		// {"nr11":"x","nr12":1,"level2":{"nr21":"xx","nr22":1,"level3":{"nr31":"xxx","nr32":1}}}
 		return level1;
 	}
 }

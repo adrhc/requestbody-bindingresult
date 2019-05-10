@@ -13,10 +13,12 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Level1 implements Serializable {
+class Level1 implements Serializable {
+	@Min(5)
 	@JsonDeserialize(using = CustomIntegerDeserializer.class)
 	private Integer nr11;
 	@Min(5)
+	@JsonDeserialize(using = CustomIntegerDeserializer.class)
 	private Integer nr12;
 	@Valid
 	private Level2 level2;

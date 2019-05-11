@@ -8,10 +8,10 @@
         <version>2.2.0.M2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>mvctries</artifactId>
+    <groupId>ro.go.adrhc</groupId>
+    <artifactId>requestbody-bindingresult</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mvctries</name>
+    <name>requestbody-bindingresult</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

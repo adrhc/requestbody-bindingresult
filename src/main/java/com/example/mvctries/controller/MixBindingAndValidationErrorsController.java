@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 /**
- * http://localhost:8082/tryctrl
+ * http://localhost:8082/errormixtest
  */
 @RestController
-@RequestMapping("/tryctrl")
+@RequestMapping("/errormixtest")
 @Slf4j
-public class TryController {
+public class MixBindingAndValidationErrorsController {
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Level1 post(@Valid @RequestBody Level1 level1, BindingResult errors) {
 		log.debug("level1:\n{}", level1);

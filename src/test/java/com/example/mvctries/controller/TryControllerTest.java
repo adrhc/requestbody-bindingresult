@@ -9,7 +9,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(TryController.class)
+@WebMvcTest(MixBindingAndValidationErrorsController.class)
 class TryControllerTest {
 	@Autowired
 	private MockMvc mvc;
@@ -17,7 +17,7 @@ class TryControllerTest {
 	@Test
 	void testExample() throws Exception {
 		this.mvc.perform(
-				post("/tryctrl")
+				post("/errormixtest")
 						.contentType(MediaType.APPLICATION_JSON_UTF8)
 						.accept(MediaType.APPLICATION_JSON_UTF8)
 //						.content("{\"nr11\":\"nr11\",\"nr12\":1,\"level2\":{\"nr21\":2,\"nr22\":\"nr22\"}}"))

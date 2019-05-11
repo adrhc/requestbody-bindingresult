@@ -11,7 +11,8 @@ import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import java.io.IOException;
 
 /**
- * Custom Integer deserializer entirely based on the already offered one by jackson.
+ * The deserialization logic is in fact the one provided by jackson,
+ * I only added the logic for gathering and storing the binding errors.
  */
 public class CustomIntegerDeserializer extends StdDeserializer<Integer> {
 	private final static NumberDeserializers.IntegerDeserializer wrapperInstance =

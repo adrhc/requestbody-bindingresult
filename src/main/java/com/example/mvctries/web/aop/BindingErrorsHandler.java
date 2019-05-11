@@ -15,7 +15,7 @@ import java.util.Arrays;
 public class BindingErrorsHandler {
 	@Before("@within(org.springframework.web.bind.annotation.RestController)")
 	public void logBefore(JoinPoint joinPoint) {
-		// user gathered errors
+		// use gathered errors
 		Arrays.stream(joinPoint.getArgs())
 				.filter(o -> o instanceof BindingResult)
 				.map(o -> (BindingResult) o)

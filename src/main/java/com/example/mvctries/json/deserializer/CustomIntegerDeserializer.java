@@ -26,16 +26,25 @@ public class CustomIntegerDeserializer extends StdDeserializer<Integer> {
 		super(vc);
 	}
 
+	/**
+	 * Jackson based deserialization logic.
+	 */
 	@Override
 	public Integer deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
 		try {
 			return wrapperInstance.deserialize(p, ctxt);
 		} catch (InvalidFormatException ex) {
-			// the logic gathering the binding errors
-			String parent = computeParentPath(ctxt.getParser().getParsingContext(), new StringBuilder()).toString();
-			DeserializersState.ERRORS.get().put(parent + p.getCurrentName(), p.getText());
+			gatherBindingErrors(p, ctxt);
 		}
 		return null;
+	}
+
+	/*
+	 * The logic gathering the binding errors.
+	 */
+	private void gatherBindingErrors(JsonParser p, DeserializationContext ctxt) throws IOException {
+		String parent = computeParentPath(ctxt.getParser().getParsingContext(), new StringBuilder()).toString();
+		DeserializersState.ERRORS.get().put(parent + p.getCurrentName(), p.getText());
 	}
 
 	private StringBuilder computeParentPath(JsonStreamContext parserCtxt, StringBuilder sb) {

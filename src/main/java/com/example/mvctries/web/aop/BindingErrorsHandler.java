@@ -11,7 +11,7 @@ import org.springframework.validation.FieldError;
 import java.util.Arrays;
 
 /**
- * The logic for getting the gathered binding errors
+ * The logic for copying the gathered binding errors
  * into the @Controller method BindingResult argument.
  */
 @Aspect

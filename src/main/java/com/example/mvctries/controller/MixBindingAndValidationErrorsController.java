@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 /**
- * http://localhost:8082/errormixtest
+ * A simple classic @Controller used for testing the solution.
  */
 @RestController
 @RequestMapping("/errormixtest")

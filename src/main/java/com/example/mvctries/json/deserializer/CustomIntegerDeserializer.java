@@ -1,7 +1,6 @@
 package com.example.mvctries.json.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonStreamContext;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.NumberDeserializers;
@@ -30,7 +29,7 @@ public class CustomIntegerDeserializer extends StdDeserializer<Integer> {
 	 * Jackson based deserialization logic.
 	 */
 	@Override
-	public Integer deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+	public Integer deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
 		try {
 			return wrapperInstance.deserialize(p, ctxt);
 		} catch (InvalidFormatException ex) {

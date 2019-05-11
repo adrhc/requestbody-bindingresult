@@ -10,6 +10,9 @@ import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
 import java.io.IOException;
 
+/**
+ * Custom Integer deserializer entirely based on the already offered one by jackson.
+ */
 public class CustomIntegerDeserializer extends StdDeserializer<Integer> {
 	private final static NumberDeserializers.IntegerDeserializer wrapperInstance =
 			new NumberDeserializers.IntegerDeserializer(Integer.class, null);
@@ -27,18 +30,19 @@ public class CustomIntegerDeserializer extends StdDeserializer<Integer> {
 		try {
 			return wrapperInstance.deserialize(p, ctxt);
 		} catch (InvalidFormatException ex) {
-			String parent = parentPath(ctxt.getParser().getParsingContext(), new StringBuilder()).toString();
+			// the logic gathering the binding errors
+			String parent = computeParentPath(ctxt.getParser().getParsingContext(), new StringBuilder()).toString();
 			DeserializersState.ERRORS.get().put(parent + p.getCurrentName(), p.getText());
 		}
 		return null;
 	}
 
-	private StringBuilder parentPath(JsonStreamContext parserCtxt, StringBuilder sb) {
+	private StringBuilder computeParentPath(JsonStreamContext parserCtxt, StringBuilder sb) {
 		JsonStreamContext parentCtxt = parserCtxt.getParent();
 		if (parentCtxt.getCurrentName() == null) {
 			return sb;
 		}
 		sb.insert(0, parentCtxt.getCurrentName() + '.');
-		return parentPath(parentCtxt, sb);
+		return computeParentPath(parentCtxt, sb);
 	}
 }

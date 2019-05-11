@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(MixBindingAndValidationErrorsController.class)
-class TryControllerTest {
+class MixBindingAndValidationErrorsControllerTest {
 	@Autowired
 	private MockMvc mvc;
 

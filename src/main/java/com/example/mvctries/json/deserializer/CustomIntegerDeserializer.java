@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  * The deserialization logic is in fact the one provided by jackson,
- * I only added the logic for gathering and storing the binding errors.
+ * I only added the logic for gathering the binding errors.
  */
 public class CustomIntegerDeserializer extends StdDeserializer<Integer> {
 	private final static NumberDeserializers.IntegerDeserializer wrapperInstance =

@@ -43,7 +43,7 @@ public class CustomIntegerDeserializer extends StdDeserializer<Integer> {
 	 */
 	private void gatherBindingErrors(JsonParser p, DeserializationContext ctxt) throws IOException {
 		String parent = computeParentPath(ctxt.getParser().getParsingContext(), new StringBuilder()).toString();
-		DeserializersState.ERRORS.get().put(parent + p.getCurrentName(), p.getText());
+		JsonParsingFeedBack.ERRORS.get().put(parent + p.getCurrentName(), p.getText());
 	}
 
 	private StringBuilder computeParentPath(JsonStreamContext parserCtxt, StringBuilder sb) {

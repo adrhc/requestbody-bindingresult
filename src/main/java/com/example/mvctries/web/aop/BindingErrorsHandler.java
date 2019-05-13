@@ -1,6 +1,6 @@
 package com.example.mvctries.web.aop;
 
-import com.example.mvctries.json.deserializer.DeserializersState;
+import com.example.mvctries.json.deserializer.JsonParsingFeedBack;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -24,11 +24,11 @@ public class BindingErrorsHandler {
 				.filter(o -> o instanceof BindingResult)
 				.map(o -> (BindingResult) o)
 				.forEach(errors -> {
-					DeserializersState.ERRORS.get().forEach((k, v) -> {
+					JsonParsingFeedBack.ERRORS.get().forEach((k, v) -> {
 						errors.addError(new FieldError(errors.getObjectName(), k, v, true, null, null, null));
 					});
 				});
 		// errors copied, clean the ThreadLocal
-		DeserializersState.ERRORS.remove();
+		JsonParsingFeedBack.ERRORS.remove();
 	}
 }

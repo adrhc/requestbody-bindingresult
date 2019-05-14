@@ -4,7 +4,6 @@ import com.example.mvctries.json.deserializer.JsonParsingFeedBack;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
@@ -15,7 +14,6 @@ import java.util.Arrays;
  * into the @Controller method BindingResult argument.
  */
 @Aspect
-@Component
 public class BindingErrorsHandler {
 	@Before("@within(org.springframework.web.bind.annotation.RestController)")
 	public void logBefore(JoinPoint joinPoint) {
